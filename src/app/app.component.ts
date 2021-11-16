@@ -6,10 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Hello From Sanjay.';
-  imgUrl="bl-logo.png";
+  title = 'HelloWorld';
+  imgUrl="../assets/bl-logo.png";
+  url ="https://www.bridgelabz.com/";
+  userName: "";
+  nameError: String="";
+
+  ngOnInit(): void {
+    this.title = "Hello From Bridgelabz"
+  }
   onClick($event){
     console.log("save button is clicked", $event);
-    window.open(this.title, "_blank");
+    window.open(this.url, "_blank");
+  }
+  onInput($event){
+    console.log("Chang Event Occurred!", $event.data);
+    const nameRegex= RegExp('^[A-Z]{1}[a-zA-z\\s]{2,}$');
+    if(nameRegex.test(this.userName)) {
+      this.nameError="";
+      return;
+    }
+    this.nameError ="Name is incorrect"
   }
 }
